@@ -1,1 +1,45 @@
-spring.application.name=AG
+server:
+  port: 8080
+
+
+langchain4j:
+  open-ai:
+    chat-model:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: ${Aliyun_APIKEY}
+      model-name: deepseek-r1-distill-qwen-1.5b
+      log-requests: true
+      log-responses: true
+    streaming-chat-model:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: ${Aliyun_APIKEY}
+      model-name: qwen-plus
+      log-requests: true
+    embedding-model:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: ${Aliyun_APIKEY}
+      model-name: text-embedding-v3
+
+      log-requests: true
+      log-responses: true
+  community:
+    redis:
+      host: 192.168.44.128
+      port: 6380
+
+logging:
+  level:
+    dev.langchain4j: debug
+spring:
+  data:
+    redis:
+      host: 192.168.44.128
+      port: 6379
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.44.128/
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

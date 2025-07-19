@@ -1,0 +1,144 @@
+{
+  "scene_name": "NPC_Central_Plaza",
+  "description": "A plaza with an NPC at the center, surrounded by interactive objects",
+  "world_origin": [0, 0, 0],
+  "environment_objects": [
+    {
+      "id": "bench_1",
+      "type": "static",
+      "name": "Wooden Bench",
+      "position": [-300, 150, 0],
+      "rotation": [0, 45, 0],
+      "scale": [1, 1, 1],
+      "interactions": [
+        {
+          "type": "sit",
+          "prompt": "Press [E] to sit on the bench",
+          "duration": 0,
+          "animation": "sit_bench"
+        }
+      ]
+    },
+    {
+      "id": "fountain_1",
+      "type": "dynamic",
+      "name": "Central Fountain",
+      "position": [0, 400, 0],
+      "rotation": [0, 0, 0],
+      "scale": [1.5, 1.5, 1.5],
+      "interactions": [
+        {
+          "type": "admire",
+          "prompt": "Press [F] to admire the fountain",
+          "duration": 5,
+          "effect": "water_splash"
+        },
+        {
+          "type": "throw_coin",
+          "prompt": "Press [G] to throw a coin",
+          "requirements": "has_coin",
+          "animation": "throw_item"
+        }
+      ]
+    },
+    {
+      "id": "signpost_1",
+      "type": "static",
+      "name": "Information Sign",
+      "position": [250, -200, 0],
+      "rotation": [0, -30, 0],
+      "scale": [1, 1, 1],
+      "interactions": [
+        {
+          "type": "read",
+          "prompt": "Press [R] to read the sign",
+          "content": "Welcome to Central Plaza! Enjoy your stay."
+        }
+      ]
+    },
+    {
+      "id": "tree_1",
+      "type": "static",
+      "name": "Oak Tree",
+      "position": [-400, -300, 0],
+      "rotation": [0, 0, 0],
+      "scale": [1.2, 1.2, 1.2],
+      "interactions": [
+        {
+          "type": "examine",
+          "prompt": "Press [Q] to examine the tree",
+          "description": "A large oak tree with thick branches"
+        }
+      ]
+    },
+    {
+      "id": "merchant_1",
+      "type": "character",
+      "name": "Street Merchant",
+      "position": [200, 200, 0],
+      "rotation": [0, 180, 0],
+      "scale": [1, 1, 1],
+      "interactions": [
+        {
+          "type": "talk",
+          "prompt": "Press [T] to talk to the merchant",
+          "dialogue": [
+            "Greetings traveler!",
+            "I have fine wares for sale.",
+            "Would you like to see my goods?"
+          ],
+          "options": [
+            {"text": "Show me your goods", "leads_to": "shop_menu"},
+            {"text": "Not now", "ends_conversation": true}
+          ]
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "walkable_areas": [
+      {
+        "type": "circle",
+        "center": [0, 0, 0],
+        "radius": 500,
+        "material": "concrete"
+      },
+      {
+        "type": "path",
+        "points": [
+          [-300, 150, 0],
+          [0, 400, 0],
+          [250, -200, 0]
+        ],
+        "width": 100,
+        "material": "stone"
+      }
+    ],
+    "obstacles": [
+      {
+        "id": "fountain_base",
+        "position": [0, 400, 0],
+        "radius": 150
+      }
+    ]
+  },
+  "ambient_effects": [
+    {
+      "type": "sound",
+      "id": "birds_chirping",
+      "position": [0, 0, 500],
+      "radius": 600,
+      "loop": true
+    },
+    {
+      "type": "particle",
+      "id": "falling_leaves",
+      "position": [-400, -300, 300],
+      "radius": 200,
+      "density": 0.5
+    }
+  ],
+  "player_start_position": [-100, -100, 0],
+  "time_of_day": "afternoon",
+  "weather": "clear"
+}
